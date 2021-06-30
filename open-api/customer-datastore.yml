@@ -1,0 +1,164 @@
+openapi: 3.0.2
+info:
+  title: Customer Data Store - OpenAPI 3.0
+  description: |-
+    Customer Data Store based on the OpenAPI 3.0 specification.
+  version: 1.0.5
+servers:
+  - url: /api/v1.0
+tags:
+  - name: customer
+    description: Customer Data Store
+paths:
+  /customers:
+    post:
+      tags:
+        - customer
+      summary: Add a new customer to the store
+      description: Add a new customer to the store
+      operationId: addCustomer
+      requestBody:
+        description: Create a new customer in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WriteCustomer'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReadCustomer'
+        '405':
+          description: Invalid input
+  
+  '/customers/{CustomerId}':
+    get:
+      tags:
+        - customer
+      summary: Find customer by ID
+      description: Returns a single customer
+      operationId: getCustomerById
+      parameters:
+        - name: CustomerId
+          in: path
+          description: ID of customer to return
+          required: true
+          schema:
+            $ref: "#/components/schemas/Uuid"
+      responses:
+        '201':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReadCustomer'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Customer not found
+
+    patch:
+      tags:
+        - customer
+      summary: Updates a customer in the store with form data
+      description: ''
+      operationId: updateCustomerWithForm
+      parameters:
+        - name: CustomerId
+          in: path
+          description: ID of customer that needs to be updated
+          required: true
+          schema:
+            $ref: "#/components/schemas/Uuid"
+      requestBody:
+        description: Update an existent customer in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomer'
+        required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReadCustomer'
+        '405':
+          description: Invalid input
+    
+components:
+  schemas:
+    WriteCustomer:
+      type: object
+      properties:
+        Data:
+          type: object
+          properties:
+            Customer:
+              type: object
+              allOf:
+                - type: "object"
+                - $ref: "#/components/schemas/Customer"
+    ReadCustomer:
+      type: object
+      properties:
+        Data:
+          type: object
+          properties:
+            Customer:
+              type: object
+              properties:
+                CustomerId:
+                  $ref: "#/components/schemas/Uuid"
+              allOf:
+                - type: "object"
+                - $ref: "#/components/schemas/Customer"
+                
+    UpdateCustomer:
+      type: object
+      properties:
+        Data:
+          type: object
+          properties:
+            Customer:
+              type: object
+              properties:
+                CustomerId:
+                  $ref: "#/components/schemas/Uuid"
+              allOf:
+                - type: "object"
+                - $ref: "#/components/schemas/Customer"
+                
+    Customer:
+      type: object
+      properties:
+        FirstName:
+          type: string
+          example: fehguy
+        Addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          example: 437 Lytton
+        city:
+          type: string
+          example: Palo Alto
+        state:
+          type: string
+          example: CA
+        zip:
+          type: string
+          example: '94301'
+    Uuid:
+      type: string
+      format: uuid
+      minLength: 36
+      maxLength: 36
