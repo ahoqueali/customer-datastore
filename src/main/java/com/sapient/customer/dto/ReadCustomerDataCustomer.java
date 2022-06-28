@@ -1,41 +1,42 @@
-package com.sapient.customer.model;
+package com.sapient.customer.dto;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.UUID;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
- * ReadCustomerData
+ * ReadCustomerDataCustomer
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-06-27T20:27:40.252Z[GMT]")
 
 
-public class ReadCustomerData   {
-  @JsonProperty("Customer")
-  private ReadCustomerDataCustomer customer = null;
+public class ReadCustomerDataCustomer   {
+  @JsonProperty("CustomerId")
+  private UUID customerId = null;
 
-  public ReadCustomerData customer(ReadCustomerDataCustomer customer) {
-    this.customer = customer;
+  public ReadCustomerDataCustomer customerId(UUID customerId) {
+    this.customerId = customerId;
     return this;
   }
 
   /**
-   * Get customer
-   * @return customer
+   * Get customerId
+   * @return customerId
    **/
   @Schema(description = "")
   
     @Valid
-    public ReadCustomerDataCustomer getCustomer() {
-    return customer;
+  @Size(min=36,max=36)   public UUID getCustomerId() {
+    return customerId;
   }
 
-  public void setCustomer(ReadCustomerDataCustomer customer) {
-    this.customer = customer;
+  public void setCustomerId(UUID customerId) {
+    this.customerId = customerId;
   }
 
 
@@ -47,21 +48,21 @@ public class ReadCustomerData   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ReadCustomerData readCustomerData = (ReadCustomerData) o;
-    return Objects.equals(this.customer, readCustomerData.customer);
+    ReadCustomerDataCustomer readCustomerDataCustomer = (ReadCustomerDataCustomer) o;
+    return Objects.equals(this.customerId, readCustomerDataCustomer.customerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customer);
+    return Objects.hash(customerId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ReadCustomerData {\n");
+    sb.append("class ReadCustomerDataCustomer {\n");
     
-    sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
+    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

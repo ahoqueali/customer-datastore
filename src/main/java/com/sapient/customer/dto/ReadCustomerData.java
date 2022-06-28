@@ -1,42 +1,40 @@
-package com.sapient.customer.model;
+package com.sapient.customer.dto;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
-import javax.validation.constraints.*;
 
 /**
- * ReadCustomer
+ * ReadCustomerData
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-06-27T20:27:40.252Z[GMT]")
 
 
-public class ReadCustomer   {
-  @JsonProperty("Data")
-  private ReadCustomerData data = null;
+public class ReadCustomerData   {
+  @JsonProperty("Customer")
+  private ReadCustomerDataCustomer customer = null;
 
-  public ReadCustomer data(ReadCustomerData data) {
-    this.data = data;
+  public ReadCustomerData customer(ReadCustomerDataCustomer customer) {
+    this.customer = customer;
     return this;
   }
 
   /**
-   * Get data
-   * @return data
+   * Get customer
+   * @return customer
    **/
   @Schema(description = "")
   
     @Valid
-    public ReadCustomerData getData() {
-    return data;
+    public ReadCustomerDataCustomer getCustomer() {
+    return customer;
   }
 
-  public void setData(ReadCustomerData data) {
-    this.data = data;
+  public void setCustomer(ReadCustomerDataCustomer customer) {
+    this.customer = customer;
   }
 
 
@@ -48,21 +46,21 @@ public class ReadCustomer   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ReadCustomer readCustomer = (ReadCustomer) o;
-    return Objects.equals(this.data, readCustomer.data);
+    ReadCustomerData readCustomerData = (ReadCustomerData) o;
+    return Objects.equals(this.customer, readCustomerData.customer);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data);
+    return Objects.hash(customer);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ReadCustomer {\n");
+    sb.append("class ReadCustomerData {\n");
     
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
     sb.append("}");
     return sb.toString();
   }

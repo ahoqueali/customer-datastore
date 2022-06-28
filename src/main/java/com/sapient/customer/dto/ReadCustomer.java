@@ -1,41 +1,40 @@
-package com.sapient.customer.model;
+package com.sapient.customer.dto;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
-import javax.validation.constraints.*;
 
 /**
- * WriteCustomerData
+ * ReadCustomer
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-06-27T20:27:40.252Z[GMT]")
 
 
-public class WriteCustomerData   {
-  @JsonProperty("Customer")
-  private AllOfWriteCustomerDataCustomer customer = null;
+public class ReadCustomer   {
+  @JsonProperty("Data")
+  private ReadCustomerData data = null;
 
-  public WriteCustomerData customer(AllOfWriteCustomerDataCustomer customer) {
-    this.customer = customer;
+  public ReadCustomer data(ReadCustomerData data) {
+    this.data = data;
     return this;
   }
 
   /**
-   * Get customer
-   * @return customer
+   * Get data
+   * @return data
    **/
   @Schema(description = "")
   
-    public AllOfWriteCustomerDataCustomer getCustomer() {
-    return customer;
+    @Valid
+    public ReadCustomerData getData() {
+    return data;
   }
 
-  public void setCustomer(AllOfWriteCustomerDataCustomer customer) {
-    this.customer = customer;
+  public void setData(ReadCustomerData data) {
+    this.data = data;
   }
 
 
@@ -47,21 +46,21 @@ public class WriteCustomerData   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WriteCustomerData writeCustomerData = (WriteCustomerData) o;
-    return Objects.equals(this.customer, writeCustomerData.customer);
+    ReadCustomer readCustomer = (ReadCustomer) o;
+    return Objects.equals(this.data, readCustomer.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customer);
+    return Objects.hash(data);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WriteCustomerData {\n");
+    sb.append("class ReadCustomer {\n");
     
-    sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }

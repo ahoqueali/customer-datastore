@@ -1,42 +1,38 @@
-package com.sapient.customer.model;
+package com.sapient.customer.dto;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 
 /**
- * UpdateCustomer
+ * WriteCustomerData
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-06-27T20:27:40.252Z[GMT]")
 
 
-public class UpdateCustomer   {
-  @JsonProperty("Data")
-  private ReadCustomerData data = null;
+public class WriteCustomerData   {
+  @JsonProperty("Customer")
+  private AllOfWriteCustomerDataCustomer customer = null;
 
-  public UpdateCustomer data(ReadCustomerData data) {
-    this.data = data;
+  public WriteCustomerData customer(AllOfWriteCustomerDataCustomer customer) {
+    this.customer = customer;
     return this;
   }
 
   /**
-   * Get data
-   * @return data
+   * Get customer
+   * @return customer
    **/
   @Schema(description = "")
   
-    @Valid
-    public ReadCustomerData getData() {
-    return data;
+    public AllOfWriteCustomerDataCustomer getCustomer() {
+    return customer;
   }
 
-  public void setData(ReadCustomerData data) {
-    this.data = data;
+  public void setCustomer(AllOfWriteCustomerDataCustomer customer) {
+    this.customer = customer;
   }
 
 
@@ -48,21 +44,21 @@ public class UpdateCustomer   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UpdateCustomer updateCustomer = (UpdateCustomer) o;
-    return Objects.equals(this.data, updateCustomer.data);
+    WriteCustomerData writeCustomerData = (WriteCustomerData) o;
+    return Objects.equals(this.customer, writeCustomerData.customer);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data);
+    return Objects.hash(customer);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UpdateCustomer {\n");
+    sb.append("class WriteCustomerData {\n");
     
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
     sb.append("}");
     return sb.toString();
   }
