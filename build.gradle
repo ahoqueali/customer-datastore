@@ -21,7 +21,8 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web',
 			'javax.validation:validation-api',
-			'io.swagger.core.v3:swagger-annotations:2.2.1'
+			'io.swagger.core.v3:swagger-annotations:2.2.1',
+			'org.hibernate:hibernate-core:5.4.19.Final'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
