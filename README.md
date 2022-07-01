@@ -51,6 +51,25 @@ status:              initialized new cluster
 clusterID:           8a681a16-9623-4fc1-a537-77e9255daafd
 nodeID:              1
 ```
-
 install db
-https://www.cockroachlabs.com/docs/v22.1/movr.html
+```shell
+./gradlew update
+```
+test db
+```shell
+cockroach sql --insecure
+```
+check table creation
+```shell
+root@:26257/defaultdb> select * from customer
+```
+
+```shell
+
+  id | first_name
+-----+-------------
+(0 rows)
+
+Time: 49ms total (execution 47ms / network 2ms)
+
+```
